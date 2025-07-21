@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>react portals</title>
+
+    <!-- React via CDN -->
+
+    <!-- React -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+
+    <!-- ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Babel (JSX support in browser) -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+
+    <!-- quando uso un react portal devo passare due argomenti, il primo è il componente da ritornare, il secondo è l'elemento html in cui vogliamo inserirlo -->
+
+    <script type="text/babel">
+
+        const { createPortal } = ReactDOM
+
+        function Modal({
+            title,
+            content,
+            show = false,
+            onClose = () => { }
+        }) {
+            return show && ReactDOM.createPortal(
+                <div className="modal-container">
+                    <div className="modal">
+                        <h2>{title}</h2>
+                        <p>{content}</p>
+                        <button onClick={onClose}>Annulla</button>
+                    </div>
+                </div>,
+                document.body // secondo argomento, elemento html in cui lo voglio reindirizzare
+            )
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
